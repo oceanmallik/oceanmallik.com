@@ -450,6 +450,102 @@
             });
     }
 
+    function initCertificatesFromJson() {
+        const accordionContainer = document.getElementById('certificates-accordion');
+
+        if (!accordionContainer) {
+            return;
+        }
+
+        const renderInfoCard = (message) => {
+            accordionContainer.innerHTML = '';
+
+            const infoCardElement = document.createElement('div');
+            infoCardElement.className = 'card';
+
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = 'Certificates';
+
+            const messageElement = document.createElement('p');
+            messageElement.textContent = message;
+
+            infoCardElement.appendChild(titleElement);
+            infoCardElement.appendChild(messageElement);
+            accordionContainer.appendChild(infoCardElement);
+        };
+
+        fetch('../../myCertificates.json')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load myCertificates.json (${response.status})`);
+                }
+
+                return response.json();
+            })
+            .then((data) => {
+                const certificates = Array.isArray(data) ? data : data.certificates;
+
+                if (!Array.isArray(certificates) || certificates.length === 0) {
+                    renderInfoCard('No certificates found in myCertificates.json yet.');
+                    return;
+                }
+
+                accordionContainer.innerHTML = '';
+
+                certificates.forEach((certificate) => {
+                    const buttonElement = document.createElement('button');
+                    buttonElement.className = 'accordion-btn';
+
+                    const titleElement = document.createElement('span');
+                    titleElement.textContent = certificate.title || 'Untitled Certificate';
+
+                    const iconElement = document.createElement('i');
+                    iconElement.className = 'fas fa-chevron-down';
+
+                    buttonElement.appendChild(titleElement);
+                    buttonElement.appendChild(iconElement);
+
+                    const panelElement = document.createElement('div');
+                    panelElement.className = 'panel';
+
+                    const panelContentElement = document.createElement('div');
+                    panelContentElement.className = 'panel-content';
+
+                    const defaultCertDescription = 'Click the image to verify certificate.';
+
+                    if (certificate.description && certificate.description !== defaultCertDescription) {
+                        const descriptionElement = document.createElement('p');
+                        descriptionElement.textContent = certificate.description;
+                        panelContentElement.appendChild(descriptionElement);
+                    }
+
+                    const linkElement = document.createElement('a');
+                    linkElement.href = certificate.verifyUrl || '#';
+                    linkElement.target = '_blank';
+                    linkElement.rel = 'noopener noreferrer';
+                    linkElement.title = certificate.verifyTitle || 'Click to Verify Certificate';
+
+                    const imageElement = document.createElement('img');
+                    imageElement.src = certificate.image || '';
+                    imageElement.alt = certificate.alt || `${certificate.title || 'Certificate'} image`;
+                    imageElement.className = 'cert-img';
+                    imageElement.style.cursor = 'pointer';
+
+                    linkElement.appendChild(imageElement);
+                    panelContentElement.appendChild(linkElement);
+                    panelElement.appendChild(panelContentElement);
+
+                    accordionContainer.appendChild(buttonElement);
+                    accordionContainer.appendChild(panelElement);
+                });
+
+                initAccordions();
+            })
+            .catch(() => {
+                renderInfoCard('Could not load certificates right now. Please check myCertificates.json.');
+            });
+    }
+
     function initSite() {
         initDynamicYear();
         initMobileMenu();
@@ -458,6 +554,7 @@
         initTypingEffect();
         initHeroPointerLight();
         initActivitiesFromJson();
+        initCertificatesFromJson();
     }
 
     if (document.readyState === 'loading') {

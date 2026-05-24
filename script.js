@@ -457,6 +457,11 @@
             return;
         }
 
+        const sourcePath = accordionContainer.dataset.certificatesSource || '../../myCertificates.json';
+        const imageBasePath = accordionContainer.dataset.certificatesImageBase || '';
+        const limitValue = parseInt(accordionContainer.dataset.certificatesLimit, 10);
+        const certificatesLimit = Number.isNaN(limitValue) ? null : Math.max(0, limitValue);
+
         const renderInfoCard = (message) => {
             accordionContainer.innerHTML = '';
 
@@ -474,7 +479,7 @@
             accordionContainer.appendChild(infoCardElement);
         };
 
-        fetch('../../myCertificates.json')
+        fetch(sourcePath)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Failed to load myCertificates.json (${response.status})`);
@@ -484,15 +489,16 @@
             })
             .then((data) => {
                 const certificates = Array.isArray(data) ? data : data.certificates;
+                const certificatesToRender = certificatesLimit === null ? certificates : certificates.slice(0, certificatesLimit);
 
-                if (!Array.isArray(certificates) || certificates.length === 0) {
+                if (!Array.isArray(certificates) || certificatesToRender.length === 0) {
                     renderInfoCard('No certificates found in myCertificates.json yet.');
                     return;
                 }
 
                 accordionContainer.innerHTML = '';
 
-                certificates.forEach((certificate) => {
+                certificatesToRender.forEach((certificate) => {
                     const buttonElement = document.createElement('button');
                     buttonElement.className = 'accordion-btn';
 
@@ -526,7 +532,7 @@
                     linkElement.title = certificate.verifyTitle || 'Click to Verify Certificate';
 
                     const imageElement = document.createElement('img');
-                    imageElement.src = certificate.image || '';
+                    imageElement.src = certificate.image ? `${imageBasePath}${certificate.image}` : '';
                     imageElement.alt = certificate.alt || `${certificate.title || 'Certificate'} image`;
                     imageElement.className = 'cert-img';
                     imageElement.style.cursor = 'pointer';

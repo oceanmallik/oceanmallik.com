@@ -111,44 +111,13 @@
         <div class="container">
             <h2 class="section-title">My <span class="highlight">Achievements</span></h2>
             
-            <!-- Accordion Container -->
-            <div style="max-width: 800px; margin: 0 auto;">
-                
-                <!-- CERTIFICATE 1 -->
-                <button class="accordion-btn">
-                    <span>Foundational C# with Microsoft</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="panel">
-                    <div class="panel-content">
-                        <p>Verified certification from freeCodeCamp and Microsoft. Click the image to verify.</p>
-                        <a href="https://www.freecodecamp.org/certification/oceanmallik/foundational-c-sharp-with-microsoft" target="_blank" title="Click to Verify Certificate">
-                            <img src="pages/achievements/csharp.jpg" alt="Foundational C# Certificate" class="cert-img" style="cursor: pointer;">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- CERTIFICATE 2 -->
-                <button class="accordion-btn">
-                    <span>Microsoft Excel Basics</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="panel">
-                    <div class="panel-content">
-                        <p>Verified certification from Muktopaath. Click the image to verify.</p>
-                        <a href="https://muktopaath.gov.bd/learner/oceanmallik?trackingcode=MC-LM409294Y152A" target="_blank" title="Click to Verify Certificate">
-                            <img src="pages/achievements/excel.jpg" alt="Microsoft Excel Basics Certificate" class="cert-img" style="cursor: pointer;">
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <div id="certificates-accordion" data-certificates-source="myCertificates.json" data-certificates-image-base="pages/achievements/" data-certificates-limit="2" style="max-width: 800px; margin: 0 auto;"></div>
 
                 <div style="text-align: center; margin-top: 20px;">
                     <a href="pages/achievements/" class="btn btn-outline">View More...</a>
                 </div>
 
             </div>
-        </div>
     </section>
 
     <!-- Support Section -->

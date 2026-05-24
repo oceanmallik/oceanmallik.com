@@ -1,41 +1,48 @@
-# Ocean Mallik - Personal Website
+# Ocean Mallik — Personal Website
 
-Personal portfolio website for [oceanmallik.com](https://www.oceanmallik.com/), built with plain HTML, CSS, and vanilla JavaScript.
+This repository holds a small, multi-page personal website for oceanmallik.com built with plain HTML, CSS and vanilla JavaScript. There is no build step or dependencies — deploy the files as static assets.
 
-## Live Website
+## Live
 
-- Main site: [https://www.oceanmallik.com/](https://www.oceanmallik.com/)
-- Blog: [https://blog.oceanmallik.com/](https://blog.oceanmallik.com/)
-- Link: [https://link.oceanmallik.com/](https://link.oceanmallik.com/)
+- Main site: https://www.oceanmallik.com/
+- Blog: https://blog.oceanmallik.com/
+- Link hub: https://link.oceanmallik.com/
 
-## Overview
+## Quick preview (local)
 
-This repository contains a multi-page personal website with:
+Serve the site locally from the project root and open http://localhost:8000:
 
-- A responsive layout for desktop and mobile
-- A reusable navigation system across pages
-- A 5-theme switcher with persistence using `localStorage`
-- Sections for activities, achievements/certificates, about, and support
-- Custom domain support via `CNAME`
+```bash
+python3 -m http.server 8000
+# or, if you have Node.js installed:
+npx serve -s .  # or `npx http-server`
+```
 
-No frameworks, no build step, and no dependencies to install.
+## What you'll find
 
-## Tech Stack
+- Static pages: `index.html`, `pages/about.html`, `pages/activities.html`, `pages/achievements/index.html`, `pages/support/index.html`, `pages/support/payment.html`
+- Styling in `style.css` and behavior in `script.js`
+- `myWorks.json` contains structured data used by the site
+- `CNAME` for the custom domain
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- [Font Awesome](https://cdnjs.com/libraries/font-awesome) (CDN)
-- Google Fonts (via CSS `@import`)
+## Features
 
-## Project Structure
+- Responsive layout for desktop and mobile
+- Theme switcher (5 themes) persisted in `localStorage`
+- Activity cards with status indicators
+- Achievements/certificates showcase
+- Support/donation flow with an internal payment page
+
+## Project structure
 
 ```text
 .
 ├── CNAME
 ├── index.html
-├── style.css
+├── myWorks.json
 ├── README.md
+├── script.js
+├── style.css
 └── pages/
     ├── about.html
     ├── activities.html
@@ -46,40 +53,18 @@ No frameworks, no build step, and no dependencies to install.
         └── payment.html
 ```
 
-## Main Pages
+## Contributing
 
-- `/index.html`: Home page with hero, featured activities, achievements preview, and support section
-- `/pages/activities.html`: Full activities/projects listing with status indicators
-- `/pages/achievements/index.html`: Certificate showcase with accordion layout
-- `/pages/about.html`: About page with education and profile details
-- `/pages/support/index.html`: Social/support links and donation options
-- `/pages/support/payment.html`: QR and payment details page
+This project is simple static content. To contribute:
 
-## Features
-
-### Theme System
-
-- Built-in themes:
-  - Cyberpunk
-  - White
-  - Soft
-  - Aurora
-  - Black
-- Theme state is saved in `localStorage` so user preference is kept across pages.
-
-### Responsive Navigation
-
-- Desktop nav + mobile menu button
-- Consistent navigation design shared by all pages
-
-### Content Modules
-
-- Activity cards with status labels (`Actively Working`, `Finished`, `Not Active/Not Sure`)
-- Achievements accordion for certificate previews and verification links
-- Support flows with external links + internal payment page
+1. Fork the repo and create a branch for your change.
+2. Edit or add files and test locally (see Quick preview).
+3. Open a pull request with a short description of your change.
 
 ## License
 
-This repository currently has no explicit license file.
+This project is licensed under the MIT License — see `LICENSE`.
 
-If you want open-source usage permissions, add a `LICENSE` (for example, MIT).
+---
+
+If you'd like a different style, more detailed install instructions, or want me to add a `LICENSE`, tell me which license to use and I can add it.

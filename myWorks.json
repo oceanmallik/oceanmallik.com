@@ -27,7 +27,7 @@
 		"icon": "fas fa-book-open",
 		"status": "active",
 		"primaryUrl": "https://github.com/AxiomVessel/DIUNotesBuddy",
-		"tech": ["HTML", "CSS"],
+		"tech": ["HTML", "CSS", "JavaScript", "Python"],
 		"links": [
 			{
 				"label": "Github Code",
@@ -48,7 +48,7 @@
 		"icon": "fas fa-gamepad",
 		"status": "active",
 		"primaryUrl": "https://remin.oceanmallik.com",
-		"tech": ["Game Dev", "Indie"],
+		"tech": ["Godot", "C#"],
 		"links": [
 			{
 				"label": "Game Website",
@@ -169,7 +169,7 @@
 		"icon": "fas fa-calculator",
 		"status": "finished",
 		"primaryUrl": "https://github.com/oceanmallik/memeCalculator",
-		"tech": ["Godot", "Dotnet C#"],
+		"tech": ["Godot", "C#"],
 		"links": [
 			{
 				"label": "Github Code",
@@ -181,7 +181,7 @@
 	{
 		"title": "Polyglot Calculator",
 		"description": "This project seamlessly links Python, C, C#, and Rust through a master C++ orchestrator. An experimental project to test polyglot programming amongst popular software.",
-		"featured": false,
+		"featured": true,
 		"icon": "fas fa-calculator",
 		"status": "finished",
 		"primaryUrl": "https://github.com/oceanmallik/polyglotCalculator",

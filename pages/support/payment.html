@@ -57,22 +57,6 @@
         </div>
     </section>
 
-    <!-- Theme Fallback Script (No button on this page) -->
-    <script>
-        const body = document.body;
-        const themes = ['theme-cyberpunk', 'theme-white', 'theme-soft', 'theme-aurora', 'theme-black'];
-        let currentThemeIndex = parseInt(localStorage.getItem('themeIndex')) || 0;
-        if (currentThemeIndex < 0 || currentThemeIndex >= themes.length) {
-            currentThemeIndex = 0;
-        }
-        
-        // Clear old classes
-        body.classList.remove('theme-black', 'theme-white', 'theme-soft', 'theme-aurora', 'theme-cyberpunk');
-        
-        // Apply current theme if valid
-        if (themes[currentThemeIndex]) {
-            body.classList.add(themes[currentThemeIndex]);
-        }
-    </script>
+    <script src="../../script.js"></script>
 </body>
 </html>

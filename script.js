@@ -272,6 +272,184 @@
         });
     }
 
+    function initActivitiesFromJson() {
+        const activitiesGrid = document.getElementById('activities-grid');
+        const activitiesPreviewGrid = document.getElementById('activities-preview-grid');
+
+        if (!activitiesGrid && !activitiesPreviewGrid) {
+            return;
+        }
+
+        const statusMap = {
+            active: { className: 'status-active', label: 'Actively Working' },
+            finished: { className: 'status-finished', label: 'Finished' },
+            idle: { className: 'status-idle', label: 'Not Sure' }
+        };
+
+        const createLinkElement = (link) => {
+            const anchorElement = document.createElement('a');
+            const iconElement = document.createElement('i');
+            const iconClass = link.iconClass || (link.type === 'github' ? 'fab fa-github' : 'fas fa-external-link-alt');
+
+            anchorElement.href = link.url || '#';
+            anchorElement.target = '_blank';
+            anchorElement.rel = 'noopener noreferrer';
+
+            if (link.type === 'live') {
+                anchorElement.classList.add('live-link');
+            }
+
+            iconElement.className = iconClass;
+            anchorElement.appendChild(iconElement);
+            anchorElement.appendChild(document.createTextNode(` ${link.label || 'Open'}`));
+
+            return anchorElement;
+        };
+
+        const createCardElement = (activity) => {
+            const statusConfig = typeof activity.status === 'string' ? statusMap[activity.status] : null;
+            const statusClassName = activity.statusClass || (statusConfig ? statusConfig.className : statusMap.active.className);
+            const statusLabel = activity.statusLabel || (statusConfig ? statusConfig.label : statusMap.active.label);
+
+            const cardElement = document.createElement('div');
+            cardElement.className = `card project-card${activity.featured ? ' featured-card' : ''}`;
+
+            if (activity.featured) {
+                const highlightElement = document.createElement('div');
+                highlightElement.className = 'card-highlight';
+                highlightElement.textContent = 'Featured';
+                cardElement.appendChild(highlightElement);
+            }
+
+            const cardImageElement = document.createElement('div');
+            cardImageElement.className = 'card-image';
+
+            const cardIconElement = document.createElement('i');
+            cardIconElement.className = activity.icon || 'fas fa-code';
+            cardImageElement.appendChild(cardIconElement);
+
+            const cardContentElement = document.createElement('div');
+            cardContentElement.className = 'card-content';
+
+            const statusElement = document.createElement('div');
+            statusElement.className = `project-status ${statusClassName}`;
+
+            const statusLightElement = document.createElement('span');
+            statusLightElement.className = 'status-light';
+            statusLightElement.setAttribute('aria-hidden', 'true');
+
+            const statusTextElement = document.createElement('span');
+            statusTextElement.textContent = statusLabel;
+
+            statusElement.appendChild(statusLightElement);
+            statusElement.appendChild(statusTextElement);
+
+            const titleElement = document.createElement('h3');
+            const titleLinkElement = document.createElement('a');
+            titleLinkElement.href = activity.primaryUrl || '#';
+            titleLinkElement.target = '_blank';
+            titleLinkElement.rel = 'noopener noreferrer';
+            titleLinkElement.textContent = activity.title || 'Untitled Activity';
+            titleElement.appendChild(titleLinkElement);
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.textContent = activity.description || '';
+
+            const badgesElement = document.createElement('div');
+            badgesElement.className = 'tech-badges';
+
+            (Array.isArray(activity.tech) ? activity.tech : []).forEach((techItem) => {
+                const badgeElement = document.createElement('small');
+                badgeElement.textContent = techItem;
+                badgesElement.appendChild(badgeElement);
+            });
+
+            const linksElement = document.createElement('div');
+            linksElement.className = 'card-links';
+
+            (Array.isArray(activity.links) ? activity.links : []).forEach((link) => {
+                if (link && link.url) {
+                    linksElement.appendChild(createLinkElement(link));
+                }
+            });
+
+            cardContentElement.appendChild(statusElement);
+            cardContentElement.appendChild(titleElement);
+            cardContentElement.appendChild(descriptionElement);
+            cardContentElement.appendChild(badgesElement);
+            cardContentElement.appendChild(linksElement);
+
+            cardElement.appendChild(cardImageElement);
+            cardElement.appendChild(cardContentElement);
+
+            return cardElement;
+        };
+
+        const showInfoMessage = (targetGrid, message) => {
+            if (!targetGrid) {
+                return;
+            }
+
+            targetGrid.innerHTML = '';
+
+            const infoCardElement = document.createElement('div');
+            infoCardElement.className = 'card project-card';
+
+            const contentElement = document.createElement('div');
+            contentElement.className = 'card-content';
+
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = 'Activities';
+
+            const textElement = document.createElement('p');
+            textElement.textContent = message;
+
+            contentElement.appendChild(titleElement);
+            contentElement.appendChild(textElement);
+            infoCardElement.appendChild(contentElement);
+
+            targetGrid.appendChild(infoCardElement);
+        };
+
+        const renderActivitiesIntoGrid = (targetGrid, activities, limit = null) => {
+            if (!targetGrid) {
+                return;
+            }
+
+            targetGrid.innerHTML = '';
+
+            const itemsToRender = limit === null ? activities : activities.slice(0, limit);
+            itemsToRender.forEach((activity) => {
+                targetGrid.appendChild(createCardElement(activity));
+            });
+        };
+
+        fetch('../myWorks.json')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load myWorks.json (${response.status})`);
+                }
+
+                return response.json();
+            })
+            .then((data) => {
+                const activities = Array.isArray(data) ? data : data.works;
+
+                if (!Array.isArray(activities) || activities.length === 0) {
+                    showInfoMessage(activitiesGrid, 'No activities found in myWorks.json yet.');
+                    showInfoMessage(activitiesPreviewGrid, 'No activities found in myWorks.json yet.');
+                    return;
+                }
+
+                renderActivitiesIntoGrid(activitiesGrid, activities);
+                renderActivitiesIntoGrid(activitiesPreviewGrid, activities, 3);
+            })
+            .catch(() => {
+                showInfoMessage(activitiesGrid, 'Could not load activities right now. Please check myWorks.json.');
+                showInfoMessage(activitiesPreviewGrid, 'Could not load activities right now. Please check myWorks.json.');
+            });
+    }
+
     function initSite() {
         initDynamicYear();
         initMobileMenu();
@@ -279,6 +457,7 @@
         initAccordions();
         initTypingEffect();
         initHeroPointerLight();
+        initActivitiesFromJson();
     }
 
     if (document.readyState === 'loading') {

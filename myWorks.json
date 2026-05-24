@@ -1,0 +1,213 @@
+[
+	{
+		"title": "DIUBlood",
+		"description": "DIUBlood is a blood donor discovery platform built for the Daffodil International University community.",
+		"featured": true,
+		"icon": "fas fa-droplet",
+		"status": "active",
+		"primaryUrl": "https://blood.oceanmallik.com",
+		"tech": ["HTML", "CSS", "JavaScript", "Python"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/OneDropOneLife",
+				"type": "github"
+			},
+			{
+				"label": "Live Website",
+				"url": "https://blood.oceanmallik.com",
+				"type": "live"
+			}
+		]
+	},
+	{
+		"title": "DIU Notes Buddy",
+		"description": "A simple note-sharing website for DIU students.",
+		"featured": true,
+		"icon": "fas fa-book-open",
+		"status": "active",
+		"primaryUrl": "https://github.com/AxiomVessel/DIUNotesBuddy",
+		"tech": ["HTML", "CSS"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/AxiomVessel/DIUNotesBuddy",
+				"type": "github"
+			},
+			{
+				"label": "Live Website",
+				"url": "https://diunotesbuddy.live/",
+				"type": "live"
+			}
+		]
+	},
+	{
+		"title": "REMIN, alone in silence",
+		"description": "My indie game in development.",
+		"featured": true,
+		"icon": "fas fa-gamepad",
+		"status": "active",
+		"primaryUrl": "https://remin.oceanmallik.com",
+		"tech": ["Game Dev", "Indie"],
+		"links": [
+			{
+				"label": "Game Website",
+				"url": "https://remin.oceanmallik.com",
+				"type": "live"
+			}
+		]
+	},
+	{
+		"title": "Personal Portfolio Website",
+		"description": "Built from scratch with multiple themes and responsive sections.",
+		"featured": true,
+		"icon": "fas fa-globe",
+		"status": "active",
+		"primaryUrl": "https://github.com/oceanmallik/myWebsite",
+		"tech": ["HTML", "CSS"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/myWebsite",
+				"type": "github"
+			},
+			{
+				"label": "Live Website",
+				"url": "https://www.oceanmallik.com",
+				"type": "live"
+			}
+		]
+	},
+	{
+		"title": "Ocean Mallik Talks",
+		"description": "My blog site where I post updates about my projects.",
+		"featured": false,
+		"icon": "fas fa-pen",
+		"status": "active",
+		"primaryUrl": "https://github.com/oceanmallik/blogWebsite",
+		"tech": ["HTML", "CSS"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/blogWebsite",
+				"type": "github"
+			},
+			{
+				"label": "Live Website",
+				"url": "https://blog.oceanmallik.com",
+				"type": "live"
+			}
+		]
+	},
+	{
+		"title": "My Link Site",
+		"description": "A simple site to showcase my links. This was heavily inspired from linktree. Real difference is that it is completely free and self-hosted.",
+		"featured": true,
+		"icon": "fas fa-link",
+		"status": "active",
+		"primaryUrl": "https://github.com/oceanmallik/myLink",
+		"tech": ["HTML", "CSS"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/myLink",
+				"type": "github"
+			},
+			{
+				"label": "Live Website",
+				"url": "https://link.oceanmallik.com",
+				"type": "live"
+			}
+		]
+	},
+	{
+		"title": "Birthday Wishing Site",
+		"description": "A simple site to wish birthdays to your friends and family.",
+		"featured": false,
+		"icon": "fas fa-cake",
+		"status": "finished",
+		"primaryUrl": "https://github.com/oceanmallik/birthday",
+		"tech": ["HTML", "CSS"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/birthday",
+				"type": "github"
+			},
+			{
+				"label": "Live Website",
+				"url": "https://birthday.oceanmallik.com",
+				"type": "live"
+			}
+		]
+	},
+	{
+		"title": "Best Friend Site",
+		"description": "A simple site to connect with your best friends. Holding memories together.",
+		"featured": false,
+		"icon": "fas fa-heart",
+		"status": "finished",
+		"primaryUrl": "https://github.com/oceanmallik/bestFriend",
+		"tech": ["HTML", "CSS"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/bestFriend",
+				"type": "github"
+			},
+			{
+				"label": "Live Website",
+				"url": "https://nimu.oceanmallik.com",
+				"type": "live"
+			}
+		]
+	},
+	{
+		"title": "Meme Calculator",
+		"description": "A fun open-source project hosted on GitHub. 2 + 2 = 5, 1 + 1 = 11 and lot more!",
+		"featured": false,
+		"icon": "fas fa-calculator",
+		"status": "finished",
+		"primaryUrl": "https://github.com/oceanmallik/memeCalculator",
+		"tech": ["Godot", "Dotnet C#"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/memeCalculator",
+				"type": "github"
+			}
+		]
+	},
+	{
+		"title": "Polyglot Calculator",
+		"description": "This project seamlessly links Python, C, C#, and Rust through a master C++ orchestrator. An experimental project to test polyglot programming amongst popular software.",
+		"featured": false,
+		"icon": "fas fa-calculator",
+		"status": "finished",
+		"primaryUrl": "https://github.com/oceanmallik/polyglotCalculator",
+		"tech": ["Python", "C", "C#", "Rust", "C++"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/polyglotCalculator",
+				"type": "github"
+			}
+		]
+	},
+	{
+		"title": "GitHub Notification Tracker",
+		"description": "A lightweight Python script that fetches and displays unread GitHub notifications directly in the terminal.",
+		"featured": false,
+		"icon": "fas fa-bell",
+		"status": "idle",
+		"primaryUrl": "https://github.com/oceanmallik/githubNotificationTracker",
+		"tech": ["Python", "CLI", "GitHub API"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/githubNotificationTracker",
+				"type": "github"
+			}
+		]
+	}
+]

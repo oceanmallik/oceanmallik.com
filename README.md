@@ -24,16 +24,6 @@ This repository holds a small, multi-page personal website for oceanmallik.com b
 - Blog: https://blog.oceanmallik.com/
 - Link hub: https://link.oceanmallik.com/
 
-## Quick preview (local)
-
-Serve the site locally from the project root and open http://localhost:8000:
-
-```bash
-python3 -m http.server 8000
-# or, if you have Node.js installed:
-npx serve -s .  # or `npx http-server`
-```
-
 ## What you'll find
 
 - Static pages: `index.html`, `pages/about.html`, `pages/activities.html`, `pages/achievements/index.html`, `pages/support/index.html`, `pages/support/payment.html`
@@ -49,26 +39,6 @@ npx serve -s .  # or `npx http-server`
 - Achievements/certificates showcase
 - Support/donation flow with an internal payment page
 
-## Project structure
-
-```text
-.
-├── CNAME
-├── index.html
-├── myWorks.json
-├── README.md
-├── script.js
-├── style.css
-└── pages/
-    ├── about.html
-    ├── activities.html
-    ├── achievements/
-    │   └── index.html
-    └── support/
-        ├── index.html
-        └── payment.html
-```
-
 ## Contributing
 
 This project is simple static content. To contribute:
@@ -80,7 +50,3 @@ This project is simple static content. To contribute:
 ## License
 
 This project is licensed under the MIT License — see `LICENSE`.
-
----
-
-If you'd like a different style, more detailed install instructions, or want me to add a `LICENSE`, tell me which license to use and I can add it.

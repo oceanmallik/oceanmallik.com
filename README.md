@@ -4,7 +4,7 @@ This repository holds a small, multi-page personal website for oceanmallik.com b
 
 <div align="center">
 
-[![My Website](https://img.shields.io/badge/%F0%9F%94%97%20Live%20Website-OCEANMALLIK.COM-black?style=for-the-badge&labelColor=red)](https://oceanmallik.com/) [![Repo](https://img.shields.io/badge/Github%20Repo-%2FmyWebsite-black?style=for-the-badge&logo=github&labelColor=14FF82)](https://github.com/oceanmallik/myWebsite)
+[![My Website](https://img.shields.io/badge/%F0%9F%94%97%20Live%20Website-OCEANMALLIK.COM-black?style=for-the-badge&labelColor=red)](https://oceanmallik.com/)
 
 </div>
 

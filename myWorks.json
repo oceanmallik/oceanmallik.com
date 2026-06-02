@@ -22,7 +22,7 @@
 	},
 	{
 		"title": "DIU Notes Buddy",
-		"description": "A simple note-sharing website for DIU students.",
+		"description": "A simple note-hosting website for DIU students.",
 		"featured": true,
 		"icon": "fas fa-book-open",
 		"status": "active",
@@ -42,11 +42,32 @@
 		]
 	},
 	{
+		"title": "DIU Notes Buddy Mobile App",
+		"description": "A simple note-hosting website ported to native android app for DIU students.",
+		"featured": true,
+		"icon": "fas fa-book-open",
+		"status": "active",
+		"primaryUrl": "https://github.com/oceanmallik/DIUNotesBuddyApp",
+		"tech": ["JavaScript", "TypeScript", "React Native"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/DIUNotesBuddyApp",
+				"type": "github"
+			},
+			{
+				"label": "Download APK",
+				"url": "https://diunotesbuddy.live/",
+				"type": "live"
+			}
+		]
+	},
+	{
 		"title": "REMIN, alone in silence",
 		"description": "My indie game in development.",
 		"featured": true,
 		"icon": "fas fa-gamepad",
-		"status": "active",
+		"status": "idle",
 		"primaryUrl": "https://remin.oceanmallik.com",
 		"tech": ["Godot", "C#"],
 		"links": [
@@ -83,7 +104,7 @@
 		"description": "My blog site where I post updates about my projects.",
 		"featured": false,
 		"icon": "fas fa-pen",
-		"status": "active",
+		"status": "finished",
 		"primaryUrl": "https://github.com/oceanmallik/blogWebsite",
 		"tech": ["HTML", "CSS"],
 		"links": [
@@ -102,9 +123,9 @@
 	{
 		"title": "My Link Site",
 		"description": "A simple site to showcase my links. This was heavily inspired from linktree. Real difference is that it is completely free and self-hosted.",
-		"featured": true,
+		"featured": false,
 		"icon": "fas fa-link",
-		"status": "active",
+		"status": "finished",
 		"primaryUrl": "https://github.com/oceanmallik/myLink",
 		"tech": ["HTML", "CSS"],
 		"links": [

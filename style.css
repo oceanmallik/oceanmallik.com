@@ -1190,61 +1190,61 @@ body.theme-black .edu-card:hover {
     margin: 0;
 }
 
-/* --- 13. Accordion (Expandable List) --- */
-.accordion-btn {
-    background-color: var(--bg-card);
-    color: var(--text-title);
-    cursor: pointer;
-    padding: 20px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: 0.4s;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    margin-bottom: 10px;
+/* --- 13. Certificate Cards --- */
+
+#certificates-accordion {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(320px, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+
+.certificate-item {
+    min-width: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.accordion-btn:hover, .accordion-btn.active {
-    background-color: var(--bg-secondary);
-    border-color: var(--primary-color);
-}
-
-.accordion-btn i {
-    transition: transform 0.3s ease;
-}
-
-.accordion-btn.active i {
-    transform: rotate(180deg);
-}
-
-.panel {
-    padding: 0 18px;
-    background-color: var(--bg-main);
-    max-height: 0;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    margin-bottom: 10px;
-    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.panel-content {
-    padding: 20px 0;
+.certificate-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.16);
+}
+
+.certificate-item a {
+    display: block;
+}
+
+.certificate-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
     text-align: center;
+}
+
+.certificate-title {
+    color: var(--text-title);
+    font-size: 1.1rem;
+    line-height: 1.4;
 }
 
 .cert-img {
     max-width: 100%;
-    border-radius: 8px;
-    border: 2px solid var(--border-color);
-    margin-top: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    border-radius: 0;
+    border: 0;
+    margin-top: 0;
+    box-shadow: none;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
 }
 
 /* --- 14. Support Page Styles (Mac Buttons) --- */
@@ -1269,6 +1269,18 @@ body.theme-black .edu-card:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 1100px) {
+    #certificates-accordion {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    #certificates-accordion {
+        grid-template-columns: 1fr;
+    }
 }
 
 .support-title {

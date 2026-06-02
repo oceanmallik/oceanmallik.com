@@ -499,37 +499,14 @@
                 accordionContainer.innerHTML = '';
 
                 certificatesToRender.forEach((certificate) => {
-                    const buttonElement = document.createElement('button');
-                    buttonElement.className = 'accordion-btn';
+                    const certificateItemElement = document.createElement('div');
+                    certificateItemElement.className = 'certificate-item';
 
-                    const titleElement = document.createElement('span');
-                    titleElement.textContent = certificate.title || 'Untitled Certificate';
-
-                    const iconElement = document.createElement('i');
-                    iconElement.className = 'fas fa-chevron-down';
-
-                    buttonElement.appendChild(titleElement);
-                    buttonElement.appendChild(iconElement);
-
-                    const panelElement = document.createElement('div');
-                    panelElement.className = 'panel';
-
-                    const panelContentElement = document.createElement('div');
-                    panelContentElement.className = 'panel-content';
-
-                    const defaultCertDescription = 'Click the image to verify certificate.';
-
-                    if (certificate.description && certificate.description !== defaultCertDescription) {
-                        const descriptionElement = document.createElement('p');
-                        descriptionElement.textContent = certificate.description;
-                        panelContentElement.appendChild(descriptionElement);
-                    }
-
-                    const linkElement = document.createElement('a');
-                    linkElement.href = certificate.verifyUrl || '#';
-                    linkElement.target = '_blank';
-                    linkElement.rel = 'noopener noreferrer';
-                    linkElement.title = certificate.verifyTitle || 'Click to Verify Certificate';
+                    const imageLinkElement = document.createElement('a');
+                    imageLinkElement.href = certificate.verifyUrl || '#';
+                    imageLinkElement.target = '_blank';
+                    imageLinkElement.rel = 'noopener noreferrer';
+                    imageLinkElement.title = certificate.verifyTitle || 'Click to Verify Certificate';
 
                     const imageElement = document.createElement('img');
                     imageElement.src = certificate.image ? `${imageBasePath}${certificate.image}` : '';
@@ -537,15 +514,20 @@
                     imageElement.className = 'cert-img';
                     imageElement.style.cursor = 'pointer';
 
-                    linkElement.appendChild(imageElement);
-                    panelContentElement.appendChild(linkElement);
-                    panelElement.appendChild(panelContentElement);
+                    imageLinkElement.appendChild(imageElement);
 
-                    accordionContainer.appendChild(buttonElement);
-                    accordionContainer.appendChild(panelElement);
+                    const cardContentElement = document.createElement('div');
+                    cardContentElement.className = 'certificate-card-content';
+
+                    const titleElement = document.createElement('h3');
+                    titleElement.className = 'certificate-title';
+                    titleElement.textContent = certificate.title || 'Untitled Certificate';
+
+                    cardContentElement.appendChild(titleElement);
+                    certificateItemElement.appendChild(imageLinkElement);
+                    certificateItemElement.appendChild(cardContentElement);
+                    accordionContainer.appendChild(certificateItemElement);
                 });
-
-                initAccordions();
             })
             .catch(() => {
                 renderInfoCard('Could not load certificates right now. Please check myCertificates.json.');

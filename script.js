@@ -461,6 +461,7 @@
         const imageBasePath = accordionContainer.dataset.certificatesImageBase || '';
         const limitValue = parseInt(accordionContainer.dataset.certificatesLimit, 10);
         const certificatesLimit = Number.isNaN(limitValue) ? null : Math.max(0, limitValue);
+        const featuredOnly = accordionContainer.dataset.certificatesFeaturedOnly === 'true';
 
         const renderInfoCard = (message) => {
             accordionContainer.innerHTML = '';
@@ -489,10 +490,11 @@
             })
             .then((data) => {
                 const certificates = Array.isArray(data) ? data : data.certificates;
-                const certificatesToRender = certificatesLimit === null ? certificates : certificates.slice(0, certificatesLimit);
+                const featuredCertificates = featuredOnly ? certificates.filter((certificate) => certificate && certificate.featured) : certificates;
+                const certificatesToRender = certificatesLimit === null ? featuredCertificates : featuredCertificates.slice(0, certificatesLimit);
 
                 if (!Array.isArray(certificates) || certificatesToRender.length === 0) {
-                    renderInfoCard('No certificates found in myCertificates.json yet.');
+                    renderInfoCard(featuredOnly ? 'No featured certificates found in myCertificates.json yet.' : 'No certificates found in myCertificates.json yet.');
                     return;
                 }
 
@@ -501,6 +503,13 @@
                 certificatesToRender.forEach((certificate) => {
                     const certificateItemElement = document.createElement('div');
                     certificateItemElement.className = 'certificate-item';
+
+                    if (certificate.featured) {
+                        certificateItemElement.classList.add('featured-card');
+                    }
+
+                    const imageCardElement = document.createElement('div');
+                    imageCardElement.className = 'certificate-image-card';
 
                     const imageLinkElement = document.createElement('a');
                     imageLinkElement.href = certificate.verifyUrl || '#';
@@ -519,12 +528,29 @@
                     const cardContentElement = document.createElement('div');
                     cardContentElement.className = 'certificate-card-content';
 
+                    const headerElement = document.createElement('div');
+                    headerElement.className = 'certificate-header-row';
+
                     const titleElement = document.createElement('h3');
                     titleElement.className = 'certificate-title';
                     titleElement.textContent = certificate.title || 'Untitled Certificate';
 
-                    cardContentElement.appendChild(titleElement);
-                    certificateItemElement.appendChild(imageLinkElement);
+                    headerElement.appendChild(titleElement);
+
+                    if (certificate.featured) {
+                        const highlightElement = document.createElement('div');
+                        highlightElement.className = 'card-highlight';
+                        const highlightTextElement = document.createElement('span');
+                        highlightTextElement.className = 'card-highlight-text';
+                        highlightTextElement.textContent = 'Featured';
+                        highlightElement.appendChild(highlightTextElement);
+                        imageCardElement.appendChild(highlightElement);
+                    }
+
+                    cardContentElement.appendChild(headerElement);
+
+                    imageCardElement.appendChild(imageLinkElement);
+                    certificateItemElement.appendChild(imageCardElement);
                     certificateItemElement.appendChild(cardContentElement);
                     accordionContainer.appendChild(certificateItemElement);
                 });

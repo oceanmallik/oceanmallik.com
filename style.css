@@ -1212,10 +1212,90 @@ body.theme-black .edu-card:hover {
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+.certificate-item.featured-card {
+    position: relative;
+    border-color: color-mix(in srgb, var(--featured-accent) 65%, var(--border-color));
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--featured-accent) 52%, transparent), 0 0 32px rgba(255, 212, 0, 0.28), 0 0 60px rgba(255, 212, 0, 0.12), 0 16px 30px rgba(0, 0, 0, 0.16);
+    animation: certificateGlow 2s ease-in-out infinite;
+}
+
+.certificate-item.featured-card:hover {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--featured-accent) 70%, transparent), 0 0 48px rgba(255, 212, 0, 0.38), 0 0 84px rgba(255, 212, 0, 0.18), 0 22px 42px -16px color-mix(in srgb, var(--featured-accent) 80%, transparent);
+}
+
+@keyframes certificateGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--featured-accent) 46%, transparent), 0 0 28px rgba(255, 212, 0, 0.24), 0 0 56px rgba(255, 212, 0, 0.10), 0 16px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    50% {
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--featured-accent) 72%, transparent), 0 0 46px rgba(255, 212, 0, 0.36), 0 0 88px rgba(255, 212, 0, 0.16), 0 16px 30px rgba(0, 0, 0, 0.18);
+    }
+}
+
 .certificate-item:hover {
     transform: translateY(-3px);
     border-color: var(--primary-color);
     box-shadow: 0 14px 24px rgba(0, 0, 0, 0.16);
+}
+
+.certificate-image-card {
+    position: relative;
+}
+
+.certificate-image-card .card-highlight {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 2;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    max-width: calc(100% - 24px);
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.62rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #000000;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--featured-accent) 98%, white), color-mix(in srgb, var(--featured-accent) 82%, white));
+    border: 1px solid color-mix(in srgb, var(--featured-accent) 72%, white);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--featured-accent) 40%, transparent), 0 0 26px color-mix(in srgb, var(--featured-accent) 65%, transparent), 0 0 48px rgba(255, 212, 0, 0.28);
+    text-shadow: 0 0 3px rgba(255, 255, 255, 1), 0 0 10px rgba(255, 236, 160, 0.95), 0 0 18px rgba(255, 212, 0, 0.95), 0 0 30px rgba(255, 212, 0, 0.5);
+    filter: drop-shadow(0 0 6px rgba(255, 212, 0, 0.75));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: featuredBadgePulse 1.8s ease-in-out infinite;
+}
+
+.certificate-image-card .card-highlight-text {
+    position: relative;
+    z-index: 1;
+    color: #000000;
+    -webkit-text-stroke: 0;
+    text-shadow: none;
+    filter: none;
+    animation: featuredTextGlow 1.8s ease-in-out infinite;
+}
+
+.certificate-image-card .card-highlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-120%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+    animation: featuredBadgeShine 2.8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.certificate-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .certificate-item a {
@@ -1234,6 +1314,55 @@ body.theme-black .edu-card:hover {
     color: var(--text-title);
     font-size: 1.1rem;
     line-height: 1.4;
+}
+
+@keyframes featuredBadgePulse {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--featured-accent) 40%, transparent), 0 0 26px color-mix(in srgb, var(--featured-accent) 65%, transparent), 0 0 48px rgba(255, 212, 0, 0.28);
+        text-shadow: 0 0 3px rgba(255, 255, 255, 1), 0 0 10px rgba(255, 236, 160, 0.95), 0 0 18px rgba(255, 212, 0, 0.95), 0 0 30px rgba(255, 212, 0, 0.5);
+        filter: drop-shadow(0 0 6px rgba(255, 212, 0, 0.75));
+    }
+
+    50% {
+        transform: translateY(-1px) scale(1.04);
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--featured-accent) 55%, transparent), 0 0 34px color-mix(in srgb, var(--featured-accent) 82%, transparent), 0 0 60px rgba(255, 212, 0, 0.38);
+        text-shadow: 0 0 4px rgba(255, 255, 255, 1), 0 0 14px rgba(255, 236, 160, 1), 0 0 24px rgba(255, 212, 0, 1), 0 0 36px rgba(255, 212, 0, 0.65);
+        filter: drop-shadow(0 0 8px rgba(255, 212, 0, 0.9));
+    }
+}
+
+@keyframes featuredTextGlow {
+    0%, 100% {
+        text-shadow: none;
+        filter: none;
+    }
+
+    50% {
+        text-shadow: none;
+        filter: none;
+    }
+}
+
+@keyframes featuredBadgeShine {
+    0% {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    55% {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(120%);
+        opacity: 0;
+    }
 }
 
 .cert-img {

@@ -1,6 +1,7 @@
 [
 	{
 		"title": "Foundational C# with Microsoft",
+		"featured": true,
 		"verifyUrl": "https://www.freecodecamp.org/certification/oceanmallik/foundational-c-sharp-with-microsoft",
 		"verifyTitle": "Click to Verify Certificate",
 		"image": "csharp.jpg",
@@ -8,6 +9,7 @@
 	},
 	{
 		"title": "Microsoft Excel Basics",
+		"featured": false,
 		"verifyUrl": "https://muktopaath.gov.bd/learner/oceanmallik?trackingcode=MC-LM409294Y152A",
 		"verifyTitle": "Click to Verify Certificate",
 		"image": "excel.jpg",
@@ -15,6 +17,7 @@
 	},
 	{
 		"title": "Microsoft Word Basics",
+		"featured": false,
 		"verifyUrl": "https://muktopaath.gov.bd/learner/oceanmallik?trackingcode=MC-O155931N427054C150A",
 		"verifyTitle": "Click to Verify Certificate",
 		"image": "word.jpg",
@@ -22,6 +25,7 @@
 	},
 	{
 		"title": "C Programming Basics with Simplilearn",
+		"featured": false,
 		"verifyUrl": "https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiIzMTM3IiwiY2VydGlmaWNhdGVfdXJsIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0XC9zaGFyZVwvOTk0ODc0NF8xMDI0MDQ3N18xNzczMjM3MzUzODQwLnBuZyIsInVzZXJuYW1lIjoiT2NlYW4gTWFsbGlrIn0%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F5920%2FC-Programming-Basics%2Fcertificate%2Fdownload-skillup&%24web_only=true",
 		"verifyTitle": "Click to Verify Certificate",
 		"image": "c.png",

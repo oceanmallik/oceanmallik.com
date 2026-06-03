@@ -42,10 +42,10 @@
 		]
 	},
 	{
-		"title": "DIU Notes Buddy Mobile App",
+		"title": "DIU Notes Buddy Native Mobile App",
 		"description": "A simple note-hosting website ported to native android app for DIU students.",
 		"featured": true,
-		"icon": "fas fa-book-open",
+		"icon": "fa-brands fa-google-play",
 		"status": "active",
 		"primaryUrl": "https://github.com/oceanmallik/DIUNotesBuddyApp",
 		"tech": ["JavaScript", "TypeScript", "React Native"],
@@ -57,7 +57,7 @@
 			},
 			{
 				"label": "Download APK",
-				"url": "https://diunotesbuddy.live/",
+				"url": "https://github.com/oceanmallik/DIUNotesBuddyApp/releases",
 				"type": "live"
 			}
 		]

@@ -1,7 +1,7 @@
 [
 	{
-		"title": "DIUBlood",
-		"description": "DIUBlood is a blood donor discovery platform built for the Daffodil International University community.",
+		"title": "BloodInfo",
+		"description": "BloodInfo is a blood donor discovery platform built for the Daffodil International University community.",
 		"featured": true,
 		"icon": "fas fa-droplet",
 		"status": "active",

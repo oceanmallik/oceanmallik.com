@@ -1,6 +1,6 @@
 [
 	{
-		"title": "DIU Notes Buddy Native Mobile App",
+		"title": "DIU Notes - Native Mobile App",
 		"description": "A simple note-hosting website ported to native android app for DIU students.",
 		"featured": true,
 		"icon": "fa-brands fa-google-play",
@@ -58,6 +58,27 @@
 		]
 	},
 	{
+		"title": "Personal Portfolio Website",
+		"description": "Built from scratch with multiple themes and responsive sections.",
+		"featured": true,
+		"icon": "fas fa-globe",
+		"status": "active",
+		"primaryUrl": "https://github.com/oceanmallik/myWebsite",
+		"tech": ["HTML", "CSS"],
+		"links": [
+			{
+				"label": "Github Code",
+				"url": "https://github.com/oceanmallik/myWebsite",
+				"type": "github"
+			},
+			{
+				"label": "Live Website",
+				"url": "https://www.oceanmallik.com",
+				"type": "live"
+			}
+		]
+	},
+	{
 		"title": "BloodInfo",
 		"description": "BloodInfo is a blood donor discovery platform built for the Daffodil International University community.",
 		"featured": true,
@@ -79,22 +100,22 @@
 		]
 	},
 	{
-		"title": "Personal Portfolio Website",
-		"description": "Built from scratch with multiple themes and responsive sections.",
+		"title": "Pocket",
+		"description": "A website hosting all my practice codes for easy access",
 		"featured": true,
-		"icon": "fas fa-globe",
+		"icon": "fa-solid fa-code",
 		"status": "active",
-		"primaryUrl": "https://github.com/oceanmallik/myWebsite",
-		"tech": ["HTML", "CSS"],
+		"primaryUrl": "https://pocket.oceanmallik.com",
+		"tech": ["HTML", "CSS", "JavaScript", "Python"],
 		"links": [
 			{
 				"label": "Github Code",
-				"url": "https://github.com/oceanmallik/myWebsite",
+				"url": "https://github.com/oceanmallik/pocket",
 				"type": "github"
 			},
 			{
 				"label": "Live Website",
-				"url": "https://www.oceanmallik.com",
+				"url": "https://pocket.oceanmallik.com",
 				"type": "live"
 			}
 		]

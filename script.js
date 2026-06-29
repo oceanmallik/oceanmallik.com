@@ -7,7 +7,7 @@
         let storedIndex = parseInt(localStorage.getItem('themeIndex'), 10);
 
         if (Number.isNaN(storedIndex) || storedIndex < 0 || storedIndex >= THEME_CLASSES.length) {
-            storedIndex = 0;
+            storedIndex = 4;
         }
 
         return storedIndex;
@@ -560,6 +560,33 @@
             });
     }
 
+
+
+    function initScrollReveal() {
+        const reveals = document.querySelectorAll('.reveal');
+        
+        if (window.IntersectionObserver) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            reveals.forEach((reveal) => {
+                revealObserver.observe(reveal);
+            });
+        } else {
+            // Fallback for older browsers
+            reveals.forEach(reveal => reveal.classList.add('active'));
+        }
+    }
+
     function initSite() {
         initDynamicYear();
         initMobileMenu();
@@ -569,6 +596,7 @@
         initHeroPointerLight();
         initActivitiesFromJson();
         initCertificatesFromJson();
+        initScrollReveal();
     }
 
     if (document.readyState === 'loading') {

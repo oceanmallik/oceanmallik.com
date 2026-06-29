@@ -8,7 +8,16 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="theme-black">
+    <script>
+        (function() {
+            var themes = ['theme-cyberpunk', 'theme-white', 'theme-soft', 'theme-aurora', 'theme-black'];
+            var idx = parseInt(localStorage.getItem('themeIndex'), 10);
+            if (!isNaN(idx) && idx >= 0 && idx < themes.length) {
+                document.body.className = themes[idx];
+            }
+        })();
+    </script>
     <nav class="navbar">
         <div class="container nav-container">
             <a href="/" class="logo">Ocean <span class="highlight">Mallik</span></a>
@@ -46,8 +55,9 @@
     </nav>
 
     <section id="home" class="hero">
+        <div id="ambient-glow"></div>
         <div class="container hero-container">
-            <div class="hero-text">
+            <div class="hero-text reveal">
                 <p class="subtitle">¡Hola visitante! Thanks for visiting.</p>
                 <h1 class="title">Ocean <span class="highlight">Mallik</span></h1>
                 <p class="description">
@@ -61,7 +71,7 @@
                 </div>
             </div>
             
-            <div class="hero-image">
+            <div class="hero-image reveal">
                 <div class="blob"></div>
                 <div class="image-frame">
                     <a href="https://link.oceanmallik.com/" target="_blank" rel="noopener noreferrer">
@@ -72,7 +82,7 @@
         </div>
     </section>
 
-    <section id="activities-preview" class="section bg-secondary">
+    <section id="activities-preview" class="section bg-secondary reveal">
         <div class="container">
             <h2 class="section-title">Featured <span class="highlight">Activities</span></h2>
 
@@ -92,7 +102,7 @@
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class="section">
+    <section id="achievements" class="section reveal">
         <div class="container">
             <h2 class="section-title">My <span class="highlight">Certificates</span></h2>
             
@@ -106,7 +116,7 @@
     </section>
 
     <!-- Support Section -->
-    <section id="support" class="section bg-secondary">
+    <section id="support" class="section bg-secondary reveal">
         <div class="container contact-container">
             <h2 class="section-title">Support <span class="highlight">Me</span></h2>
             <p class="contact-text">If you like my work, consider supporting me or just saying hello!</p>

@@ -19,11 +19,12 @@
     --primary-hover: #ffea70;
     --bg-main: #0a0615;
     --bg-secondary: #120a24;
-    --bg-card: #1a1033;
-    --nav-bg: rgba(10, 6, 21, 0.9);
+    --bg-card: rgba(26, 16, 51, 0.4);
+    --nav-bg: rgba(10, 6, 21, 0.4);
     --text-title: #ffffff;
     --text-muted: #a7a1d1;
-    --border-color: #3a2a66;
+    --border-color: rgba(58, 42, 102, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
     --featured-accent: #ffd400;
     
     /* Spacing & Layout */
@@ -40,14 +41,15 @@ body.theme-black {
     
     --bg-main: #000000;
     --bg-secondary: #0a0a0a;
-    --bg-card: #121212;
-    --nav-bg: rgba(0, 0, 0, 0.85);
+    --bg-card: rgba(18, 18, 18, 0.4);
+    --nav-bg: rgba(0, 0, 0, 0.4);
     
     --text-main: #e5e5e5;
     --text-title: #ffffff;
     --text-muted: #a3a3a3;
     
-    --border-color: #262626;
+    --border-color: rgba(38, 38, 38, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 /* === THEME 3: CLEAN WHITE (Bright) === */
@@ -58,14 +60,15 @@ body.theme-white {
     
     --bg-main: #ffffff;
     --bg-secondary: #f3f4f6;        
-    --bg-card: #f9fafb;             
-    --nav-bg: rgba(255, 255, 255, 0.9);
+    --bg-card: rgba(249, 250, 251, 0.6);
+    --nav-bg: rgba(255, 255, 255, 0.6);
     
     --text-main: #4b5563;           
     --text-title: #111827;          
     --text-muted: #6b7280;
     
-    --border-color: #e5e7eb;
+    --border-color: rgba(229, 231, 235, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.4);
 }
 
 /* === THEME 4: SOFT LIGHT (Warm/Paper) === */
@@ -76,14 +79,15 @@ body.theme-soft {
     
     --bg-main: #fff0e5;             /* Requested Color */
     --bg-secondary: #fae1cf;        /* Slightly darker warm tone */
-    --bg-card: #ffffff;             /* White cards look crisp on this bg */
-    --nav-bg: rgba(255, 240, 229, 0.9);
+    --bg-card: rgba(255, 255, 255, 0.55);
+    --nav-bg: rgba(255, 240, 229, 0.6);
     
     --text-main: #44403c;           /* Warm Dark Grey */
     --text-title: #1c1917;          /* Warm Black */
     --text-muted: #78716c;
     
-    --border-color: #ebd5c1;
+    --border-color: rgba(235, 213, 193, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.5);
 }
 
 /* === THEME 5: AURORA MINT (Fresh/Calm) === */
@@ -94,14 +98,15 @@ body.theme-aurora {
 
     --bg-main: #e8fff8;
     --bg-secondary: #d9f7ee;
-    --bg-card: #f7fffc;
-    --nav-bg: rgba(232, 255, 248, 0.9);
+    --bg-card: rgba(247, 255, 252, 0.55);
+    --nav-bg: rgba(232, 255, 248, 0.6);
 
     --text-main: #1f3a3d;
     --text-title: #102427;
     --text-muted: #4f6d70;
 
-    --border-color: #b9e4da;
+    --border-color: rgba(185, 228, 218, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.5);
 }
 
 /* === CYBERPUNK CLASS ALIAS (matches base theme) === */
@@ -112,14 +117,15 @@ body.theme-cyberpunk {
 
     --bg-main: #0a0615;
     --bg-secondary: #120a24;
-    --bg-card: #1a1033;
-    --nav-bg: rgba(10, 6, 21, 0.9);
+    --bg-card: rgba(26, 16, 51, 0.4);
+    --nav-bg: rgba(10, 6, 21, 0.4);
 
     --text-main: #e8e6ff;
     --text-title: #ffffff;
     --text-muted: #a7a1d1;
 
-    --border-color: #3a2a66;
+    --border-color: rgba(58, 42, 102, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 body.theme-cyberpunk .highlight {
@@ -403,9 +409,11 @@ img {
     right: 0;
     min-width: 180px;
     background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
     padding: 6px;
     z-index: 1100;
 }
@@ -461,8 +469,10 @@ body.theme-cyberpunk .theme-list-item.active i {
     top: 0;
     width: 100%;
     background-color: var(--nav-bg); 
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -755,11 +765,13 @@ body.theme-cyberpunk .theme-list-item.active i {
 
 .card {
     background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
     border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-card h3 {

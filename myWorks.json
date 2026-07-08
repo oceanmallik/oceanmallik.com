@@ -80,7 +80,7 @@
 	},
 	{
 		"title": "BloodInfo",
-		"description": "BloodInfo is a blood donor discovery platform built for the Daffodil International University community.",
+		"description": "BloodInfo is a blood donor discovery platform built for showing blood information.",
 		"featured": false,
 		"icon": "fas fa-droplet",
 		"status": "active",

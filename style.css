@@ -1508,6 +1508,14 @@ body.theme-black .edu-card:hover {
     filter: brightness(1.03);
 }
 
+.btn-supportkori {
+    background: linear-gradient(135deg, #ff7b7b 0%, #ff5f5f 58%, #e64545 100%);
+    border-color: #ff9c9c;
+}
+.btn-supportkori:hover {
+    filter: brightness(1.03);
+}
+
 .btn-bkash {
     background: linear-gradient(135deg, #ff4ea1 0%, #e2136e 58%, #b20f55 100%);
     border-color: #f37cb8;

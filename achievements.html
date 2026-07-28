@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Activities | Ocean Mallik</title>
-    <link rel="icon" type="image/png" href="../favicon.png">
-    <link rel="stylesheet" href="../style.css">
+    <title>Achievements - Ocean Mallik</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -15,9 +15,10 @@
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
-                    <li><a href="activities.html" class="highlight">My Activities</a></li>
-                    <li><a href="achievements/">My Achievements</a></li>
-                    <li><a href="support/">Support Me</a></li>
+                    <li><a href="activities.html">My Activities</a></li>
+                    <li><a href="achievements.html" class="highlight">My Achievements</a></li>
+                    <li><a href="stats.html">My Stats</a></li>
+                    <li><a href="support.html">Support Me</a></li>
                     <li><a href="about.html">About Me</a></li>
                 </ul>
 
@@ -31,24 +32,27 @@
                     </button>
                     <div id="theme-list" class="theme-list hidden" role="listbox" aria-label="Theme list"></div>
                 </div>
-                <button id="mobile-menu-btn" class="menu-btn"><i class="fas fa-bars"></i></button>
+
+                <button id="mobile-menu-btn" class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
 
         <div id="mobile-menu" class="mobile-menu hidden">
             <a href="/">Home</a>
             <a href="activities.html">My Activities</a>
-            <a href="achievements/">My Achievements</a>
-            <a href="support/">Support Me</a>
+            <a href="achievements.html">My Achievements</a>
+            <a href="stats.html">My Stats</a>
+            <a href="support.html">Support Me</a>
             <a href="about.html">About Me</a>
         </div>
     </nav>
 
-    <section id="activities" class="section bg-secondary" style="padding-top: 120px; min-height: 100vh;">
-        <div class="container">
-            <h1 class="title" style="text-align: center; margin-bottom: 3rem;">My <span class="highlight">Activities</span></h1>
-
-            <div id="activities-grid" class="projects-grid"></div>
+    <section class="section" style="padding-top: 120px; height: auto;">
+        <div class="container" style="max-width: 1400px;">
+            <h1 class="title" style="text-align: center; margin-bottom: 1.5rem;">My <span class="highlight">Certificates</span></h1>
+            <div id="certificates-accordion" data-certificates-source="myCertificates.json" data-certificates-image-base="pages/achievements/"></div>
         </div>
     </section>
 
@@ -56,6 +60,6 @@
         <p>Built with curiosity and too much caffeine.<br>&copy; <span id="current-year"></span> Ocean</p>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

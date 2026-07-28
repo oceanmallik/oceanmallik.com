@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Activities | Ocean Mallik</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">Ocean <span class="highlight">Mallik</span></a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="activities.html" class="highlight">My Activities</a></li>
+                    <li><a href="achievements.html">My Achievements</a></li>
+                    <li><a href="stats.html">My Stats</a></li>
+                    <li><a href="support.html">Support Me</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                </ul>
+
+                <div class="theme-switcher">
+                    <button id="theme-toggle" class="theme-toggle-btn" title="Switch Theme">
+                        <i class="fas fa-bolt theme-icon"></i>
+                        <span class="theme-name">Cyberpunk</span>
+                    </button>
+                    <button id="theme-list-toggle" class="theme-list-toggle-btn" title="Show theme list" aria-label="Show theme list" aria-expanded="false">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="theme-list" class="theme-list hidden" role="listbox" aria-label="Theme list"></div>
+                </div>
+                <button id="mobile-menu-btn" class="menu-btn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <a href="/">Home</a>
+            <a href="activities.html">My Activities</a>
+            <a href="achievements.html">My Achievements</a>
+            <a href="stats.html">My Stats</a>
+            <a href="support.html">Support Me</a>
+            <a href="about.html">About Me</a>
+        </div>
+    </nav>
+
+    <section id="activities" class="section bg-secondary" style="padding-top: 120px; min-height: 100vh;">
+        <div class="container">
+            <h1 class="title" style="text-align: center; margin-bottom: 3rem;">My <span class="highlight">Activities</span></h1>
+            <div id="activities-grid" class="projects-grid"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built with curiosity and too much caffeine.<br>&copy; <span id="current-year"></span> Ocean</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

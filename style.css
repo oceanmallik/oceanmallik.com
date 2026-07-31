@@ -1633,7 +1633,7 @@ body.theme-black .edu-card:hover {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 30px;
+    padding: 20px 30px;
     display: flex;
     flex-direction: column;
     position: relative;

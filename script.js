@@ -560,7 +560,191 @@
             });
     }
 
+    function initProblemSolvingStats() {
+        const statsContainer = document.getElementById('stats-container');
+        if (!statsContainer) return;
 
+        fetch('stats/sites.json')
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load sites.json');
+                return response.json();
+            })
+            .then(sites => {
+                if (!Array.isArray(sites) || sites.length === 0) {
+                    statsContainer.innerHTML = '<p class="description" style="grid-column: 1 / -1;">No stats available yet.</p>';
+                    return;
+                }
+                
+                sites.forEach(siteFile => {
+                    fetch(`stats/${siteFile}`)
+                        .then(res => {
+                            if (!res.ok) throw new Error(`Failed to load ${siteFile}`);
+                            return res.json();
+                        })
+                        .then(statData => {
+                            renderStatCard(statsContainer, statData);
+                        })
+                        .catch(err => console.error(err));
+                });
+            })
+            .catch(err => {
+                console.error(err);
+                statsContainer.innerHTML = '<p class="description" style="grid-column: 1 / -1;">Could not load stats right now.</p>';
+            });
+    }
+
+    function renderStatCard(container, data) {
+        const card = document.createElement('div');
+        card.className = 'stat-card reveal active';
+
+        const topSection = document.createElement('div');
+        topSection.className = 'stat-card-top';
+
+        const infoBlock = document.createElement('div');
+        infoBlock.className = 'stat-card-info';
+        
+        const logoTitle = document.createElement('div');
+        logoTitle.className = 'stat-logo-title';
+        if (data.logoIcon) {
+            const icon = document.createElement('i');
+            icon.className = data.logoIcon;
+            logoTitle.appendChild(icon);
+        }
+        const title = document.createElement('h3');
+        title.textContent = data.siteName;
+        logoTitle.appendChild(title);
+        
+        const userAndSolved = document.createElement('p');
+        userAndSolved.style.display = 'flex';
+        userAndSolved.style.alignItems = 'center';
+        
+        const userText = document.createElement('span');
+        userText.textContent = `@${data.username}`;
+        
+        const link = document.createElement('a');
+        link.href = data.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.innerHTML = '<i class="fas fa-external-link-alt"></i>';
+        link.className = 'stat-ext-link';
+        link.title = 'View Profile';
+        
+        userAndSolved.appendChild(userText);
+        userAndSolved.appendChild(link);
+        
+        infoBlock.appendChild(logoTitle);
+        infoBlock.appendChild(userAndSolved);
+        
+        const centerBlock = document.createElement('div');
+        centerBlock.className = 'stat-card-center';
+        
+        let computedTotalSolved = data.totalSolved || 0;
+        if (data.languages && Object.keys(data.languages).length > 0) {
+            computedTotalSolved = Object.values(data.languages).reduce((sum, val) => sum + val, 0);
+        }
+        
+        const bigValue = document.createElement('span');
+        bigValue.className = 'stat-big-value';
+        bigValue.textContent = computedTotalSolved;
+        
+        const bigLabel = document.createElement('span');
+        bigLabel.className = 'stat-big-label';
+        bigLabel.textContent = 'Total Solved';
+        
+        centerBlock.appendChild(bigValue);
+        centerBlock.appendChild(bigLabel);
+        
+        infoBlock.appendChild(centerBlock);
+        
+        topSection.appendChild(infoBlock);
+
+        if (data.languages && Object.keys(data.languages).length > 0) {
+            const chartContainer = document.createElement('div');
+            chartContainer.className = 'stat-chart-container';
+            
+            const canvas = document.createElement('canvas');
+            chartContainer.appendChild(canvas);
+            topSection.appendChild(chartContainer);
+
+            setTimeout(() => {
+                const ctx = canvas.getContext('2d');
+                const labels = Object.keys(data.languages).map(lang => `${lang}: ${data.languages[lang]}`);
+                const values = Object.values(data.languages);
+                
+                const backgroundColors = [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#E7E9ED', '#71B37C'
+                ];
+                const textColor = getComputedStyle(document.body).getPropertyValue('--text-main').trim() || '#e2e2e2';
+
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: values,
+                            backgroundColor: backgroundColors.slice(0, labels.length),
+                            borderWidth: 1,
+                            borderColor: 'transparent'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    color: textColor,
+                                    font: { family: "'Inter', sans-serif" }
+                                }
+                            }
+                        }
+                    }
+                });
+            }, 0);
+        }
+
+        card.appendChild(topSection);
+
+        if (data.customStats && Array.isArray(data.customStats) && data.customStats.length > 0) {
+            const badgesContainer = document.createElement('div');
+            badgesContainer.className = 'stat-badges';
+            
+            data.customStats.forEach(stat => {
+                const badge = document.createElement('div');
+                badge.className = 'stat-badge';
+                
+                const iconContainer = document.createElement('div');
+                iconContainer.className = 'stat-badge-icon';
+                const icon = document.createElement('i');
+                icon.className = stat.icon || 'fa-solid fa-star';
+                iconContainer.appendChild(icon);
+                
+                const infoContainer = document.createElement('div');
+                infoContainer.className = 'stat-badge-info';
+                
+                const statTitle = document.createElement('span');
+                statTitle.className = 'stat-badge-title';
+                statTitle.textContent = stat.title;
+                
+                const statValue = document.createElement('span');
+                statValue.className = 'stat-badge-value';
+                statValue.textContent = stat.value;
+                
+                infoContainer.appendChild(statTitle);
+                infoContainer.appendChild(statValue);
+                
+                badge.appendChild(iconContainer);
+                badge.appendChild(infoContainer);
+                
+                badgesContainer.appendChild(badge);
+            });
+            
+            card.appendChild(badgesContainer);
+        }
+
+        container.appendChild(card);
+    }
 
     function initScrollReveal() {
         const reveals = document.querySelectorAll('.reveal');
@@ -596,6 +780,7 @@
         initHeroPointerLight();
         initActivitiesFromJson();
         initCertificatesFromJson();
+        initProblemSolvingStats();
         initScrollReveal();
     }
 

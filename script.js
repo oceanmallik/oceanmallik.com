@@ -628,6 +628,55 @@
         return baseData;
     }
 
+    async function fetchLeetcodeData(baseData) {
+        const username = baseData.username;
+        try {
+            const profileRes = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${username}`);
+            const profileData = await profileRes.json();
+            
+            const langRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}/language`);
+            const langData = await langRes.json();
+            
+            const badgesRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}/badges`);
+            const badgesData = await badgesRes.json();
+            
+            if (profileData.errors || profileData.error) {
+                throw new Error("Failed to fetch Leetcode data");
+            }
+            
+            baseData.totalSolved = profileData.totalSolved || 0;
+            
+            baseData.customStats = [
+                {
+                    title: "Ranking",
+                    value: profileData.ranking ? profileData.ranking.toLocaleString() : "Unranked",
+                    icon: "fa-solid fa-trophy"
+                },
+                {
+                    title: "Badges",
+                    value: badgesData.badgesCount !== undefined ? badgesData.badgesCount.toString() : "0",
+                    icon: "fa-solid fa-medal"
+                },
+                {
+                    title: "Contribution",
+                    value: profileData.contributionPoint !== undefined ? profileData.contributionPoint.toLocaleString() : "0",
+                    icon: "fa-solid fa-hand-holding-heart"
+                }
+            ];
+            
+            baseData.languages = {};
+            if (langData.languageProblemCount && Array.isArray(langData.languageProblemCount)) {
+                langData.languageProblemCount.forEach(item => {
+                    baseData.languages[item.languageName] = item.problemsSolved;
+                });
+            }
+            
+        } catch (e) {
+            console.error("LeetCode API error", e);
+        }
+        return baseData;
+    }
+
     function initProblemSolvingStats() {
         const statsContainer = document.getElementById('stats-container');
         if (!statsContainer) return;
@@ -643,8 +692,8 @@
                     return;
                 }
                 
-                sites.forEach(siteFile => {
-                    fetch(`stats/${siteFile}`)
+                Promise.all(sites.map(siteFile => {
+                    return fetch(`stats/${siteFile}`)
                         .then(res => {
                             if (!res.ok) throw new Error(`Failed to load ${siteFile}`);
                             return res.json();
@@ -652,10 +701,21 @@
                         .then(async statData => {
                             if (statData.api === 'codeforces') {
                                 statData = await fetchCodeforcesData(statData);
+                            } else if (statData.api === 'leetcode') {
+                                statData = await fetchLeetcodeData(statData);
                             }
-                            renderStatCard(statsContainer, statData);
+                            return statData;
                         })
-                        .catch(err => console.error(err));
+                        .catch(err => {
+                            console.error(err);
+                            return null;
+                        });
+                })).then(results => {
+                    results.forEach(statData => {
+                        if (statData) {
+                            renderStatCard(statsContainer, statData);
+                        }
+                    });
                 });
             })
             .catch(err => {

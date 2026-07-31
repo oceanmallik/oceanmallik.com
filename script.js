@@ -560,6 +560,74 @@
             });
     }
 
+    async function fetchCodeforcesData(baseData) {
+        const username = baseData.username;
+        try {
+            const infoRes = await fetch(`https://codeforces.com/api/user.info?handles=${username}`);
+            const infoData = await infoRes.json();
+            
+            const statusRes = await fetch(`https://codeforces.com/api/user.status?handle=${username}`);
+            const statusData = await statusRes.json();
+            
+            if (infoData.status !== "OK" || statusData.status !== "OK") {
+                throw new Error("Failed to fetch Codeforces data");
+            }
+            
+            const user = infoData.result[0];
+            const submissions = statusData.result;
+            
+            baseData.customStats = [
+                {
+                    title: "Rating",
+                    value: user.rating ? user.rating.toString() : "Unrated",
+                    icon: "fa-solid fa-chart-line"
+                },
+                {
+                    title: "Rank",
+                    value: user.rank ? user.rank : "Unranked",
+                    icon: "fa-solid fa-trophy"
+                },
+                {
+                    title: "Max Rating",
+                    value: user.maxRating ? user.maxRating.toString() : "N/A",
+                    icon: "fa-solid fa-star"
+                }
+            ];
+            
+            const solvedProblems = new Set();
+            const languages = {};
+            
+            submissions.forEach(sub => {
+                if (sub.verdict === "OK") {
+                    const problemId = `${sub.problem.contestId}-${sub.problem.index}`;
+                    if (!solvedProblems.has(problemId)) {
+                        solvedProblems.add(problemId);
+                        
+                        let lang = sub.programmingLanguage;
+                        if (lang.includes("C++")) lang = "C++";
+                        else if (lang.includes("C#")) lang = "C#";
+                        else if (lang.includes("Python") || lang.includes("PyPy")) lang = "Python";
+                        else if (lang.includes("Java")) lang = "Java";
+                        else if (lang.includes("Kotlin")) lang = "Kotlin";
+                        else if (lang.includes("Rust")) lang = "Rust";
+                        else if (lang.includes("JavaScript") || lang.includes("Node")) lang = "JavaScript";
+                        else if (lang.includes("Go")) lang = "Go";
+                        else lang = lang.split(' ')[0];
+                        
+                        languages[lang] = (languages[lang] || 0) + 1;
+                    }
+                }
+            });
+            
+            baseData.totalSolved = solvedProblems.size;
+            baseData.languages = languages;
+            
+        } catch (e) {
+            console.error("Codeforces API error", e);
+        }
+        return baseData;
+    }
+
     function initProblemSolvingStats() {
         const statsContainer = document.getElementById('stats-container');
         if (!statsContainer) return;
@@ -581,7 +649,10 @@
                             if (!res.ok) throw new Error(`Failed to load ${siteFile}`);
                             return res.json();
                         })
-                        .then(statData => {
+                        .then(async statData => {
+                            if (statData.api === 'codeforces') {
+                                statData = await fetchCodeforcesData(statData);
+                            }
                             renderStatCard(statsContainer, statData);
                         })
                         .catch(err => console.error(err));

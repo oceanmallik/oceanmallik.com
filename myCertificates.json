@@ -7,7 +7,14 @@
 		"alt": "Foundational C# Certificate"
 	},
 	{
-		"title": "SQL (Basic) Certificate",
+		"title": "C# Certificate from Hackerrank",
+		"featured": true,
+		"verifyUrl": "https://www.hackerrank.com/certificates/f0b0cb0d8b10",
+		"image": "csharp.png",
+		"alt": "C# Certificate from Hackerrank"
+	},
+	{
+		"title": "SQL (Basic) Certificate from Hackerrank",
 		"featured": true,
 		"verifyUrl": "https://www.hackerrank.com/certificates/d0bb2c78a035",
 		"image": "sql.png",

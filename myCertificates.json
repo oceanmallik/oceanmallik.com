@@ -7,6 +7,13 @@
 		"alt": "Foundational C# Certificate"
 	},
 	{
+		"title": "SQL (Basic) Certificate",
+		"featured": true,
+		"verifyUrl": "https://www.hackerrank.com/certificates/d0bb2c78a035",
+		"image": "sql.png",
+		"alt": "SQL (Basic) Certificate"
+	},
+	{
 		"title": "Microsoft Excel Basics",
 		"featured": false,
 		"verifyUrl": "https://muktopaath.gov.bd/learner/oceanmallik?trackingcode=MC-LM409294Y152A",

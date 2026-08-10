@@ -7,6 +7,13 @@
 		"alt": "Foundational C# Certificate"
 	},
 	{
+		"title": "Relational Databases",
+		"featured": true,
+		"verifyUrl": "https://www.freecodecamp.org/certification/oceanmallik/relational-databases-v9",
+		"image": "sqlfcc.png",
+		"alt": "Relational Databases Certificate"
+	},
+	{
 		"title": "C# Certificate from Hackerrank",
 		"featured": true,
 		"verifyUrl": "https://www.hackerrank.com/certificates/f0b0cb0d8b10",

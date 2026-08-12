@@ -1,48 +1,48 @@
 [
 	{
-		"title": "Foundational C# with Microsoft",
+		"title": "Foundational C# with Microsoft (fCC)",
 		"featured": true,
 		"verifyUrl": "https://www.freecodecamp.org/certification/oceanmallik/foundational-c-sharp-with-microsoft",
 		"image": "csharp.jpg",
 		"alt": "Foundational C# Certificate"
 	},
 	{
-		"title": "Relational Databases",
+		"title": "Relational Databases (fCC)",
 		"featured": true,
 		"verifyUrl": "https://www.freecodecamp.org/certification/oceanmallik/relational-databases-v9",
 		"image": "sqlfcc.png",
 		"alt": "Relational Databases Certificate"
 	},
 	{
-		"title": "C# Certificate from Hackerrank",
+		"title": "C# Certificate (Hackerrank)",
 		"featured": true,
 		"verifyUrl": "https://www.hackerrank.com/certificates/f0b0cb0d8b10",
 		"image": "csharp.png",
-		"alt": "C# Certificate from Hackerrank"
+		"alt": "C# (Basic) Certificate from Hackerrank"
 	},
 	{
-		"title": "SQL (Basic) Certificate from Hackerrank",
+		"title": "SQL Certificate (Hackerrank)",
 		"featured": true,
 		"verifyUrl": "https://www.hackerrank.com/certificates/d0bb2c78a035",
 		"image": "sql.png",
-		"alt": "SQL (Basic) Certificate"
+		"alt": "SQL (Basic) Certificate from Hackerrank"
 	},
 	{
-		"title": "Microsoft Excel Basics",
+		"title": "Microsoft Excel Basics (10MS)",
 		"featured": false,
 		"verifyUrl": "https://muktopaath.gov.bd/learner/oceanmallik?trackingcode=MC-LM409294Y152A",
 		"image": "excel.jpg",
 		"alt": "Microsoft Excel Basics Certificate"
 	},
 	{
-		"title": "Microsoft Word Basics",
+		"title": "Microsoft Word Basics (10MS)",
 		"featured": false,
 		"verifyUrl": "https://muktopaath.gov.bd/learner/oceanmallik?trackingcode=MC-O155931N427054C150A",
 		"image": "word.jpg",
 		"alt": "Microsoft Word Basics Certificate"
 	},
 	{
-		"title": "C Programming Basics with Simplilearn",
+		"title": "C Programming Basics (Simplilearn)",
 		"featured": false,
 		"verifyUrl": "https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiIzMTM3IiwiY2VydGlmaWNhdGVfdXJsIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0XC9zaGFyZVwvOTk0ODc0NF8xMDI0MDQ3N18xNzczMjM3MzUzODQwLnBuZyIsInVzZXJuYW1lIjoiT2NlYW4gTWFsbGlrIn0%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F5920%2FC-Programming-Basics%2Fcertificate%2Fdownload-skillup&%24web_only=true",
 		"image": "c.png",

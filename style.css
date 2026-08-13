@@ -709,6 +709,25 @@ body.theme-cyberpunk .theme-list-item.active i {
     object-fit: cover;
 }
 
+.about-image-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+    padding: 0;
+}
+
+.about-image-frame img {
+    display: block;
+    width: min(100%, 280px);
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+}
+
 #ambient-glow {
     position: absolute;
     top: 0;
@@ -1614,7 +1633,7 @@ body.theme-black .edu-card:hover {
 
 @media (min-width: 992px) {
     .about-image-col {
-        margin-top: 85px; 
+        margin-top: 0; 
     }
 }
 
